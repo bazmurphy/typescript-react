@@ -10,7 +10,7 @@ const Counter = () => {
 
   return (
     <>
-      <h1>Count is {count}</h1>
+      <h2>Counter One: {count}</h2>
       <div>
         <button onClick={() => setCount((prevCount) => prevCount + 1)}>
           +
