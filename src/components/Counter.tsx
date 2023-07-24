@@ -12,11 +12,11 @@ const Counter = () => {
     <>
       <h2>Counter One: {count}</h2>
       <div>
-        <button onClick={() => setCount((prevCount) => prevCount + 1)}>
-          +
-        </button>
         <button onClick={() => setCount((prevCount) => prevCount - 1)}>
           -
+        </button>
+        <button onClick={() => setCount((prevCount) => prevCount + 1)}>
+          +
         </button>
       </div>
     </>

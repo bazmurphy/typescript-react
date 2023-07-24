@@ -11,11 +11,11 @@ const CounterTwo = ({ setCount, children }: CounterTwoProps) => {
     <>
       <h2>{children}</h2>
       <div>
-        <button onClick={() => setCount((prevCount) => prevCount + 1)}>
-          +
-        </button>
         <button onClick={() => setCount((prevCount) => prevCount - 1)}>
           -
+        </button>
+        <button onClick={() => setCount((prevCount) => prevCount + 1)}>
+          +
         </button>
       </div>
     </>

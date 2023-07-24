@@ -23,7 +23,7 @@ const Hooks = () => {
 
   // we could use a non-null assertion with "null!"
   const inputRef = useRef<HTMLInputElement>(null);
-  console.log("inputRef?.current:", inputRef?.current);
+  // console.log("inputRef?.current:", inputRef?.current);
   console.log("inputRef?.current?.value:", inputRef?.current?.value);
   // changing the value of the Ref will NOT make a re-render of that component
 
