@@ -3,4 +3,52 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.fun {
+  display: block;
+  font-size: 3rem;
+  cursor: pointer;
+  text-shadow: 0rem 0rem 1rem #efb346;
+}
+
+.fun:hover {
+  transform: rotate(360deg);
+  transition: 0.25s linear;
+}
+
+.fun-two {
+  display: block;
+  font-size: 3rem;
+  cursor: pointer;
+  text-shadow: 0rem 0rem 1rem #efb346;
+}
+
+.fun-two:hover {
+  animation: gelatine 0.75s infinite;
+}
+
+@keyframes gelatine {
+  from,
+  to {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
 }
