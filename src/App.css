@@ -1,11 +1,10 @@
 #root {
-  max-width: 1280px;
+  max-width: 320px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
-  place-items: center;
+  background: linear-gradient(90deg, hsl(250, 75%, 25%), hsl(200, 75%, 25%));
 }
 
 ul {
@@ -16,9 +15,9 @@ ul {
 
 .fun {
   display: block;
-  font-size: 3rem;
+  font-size: 2rem;
   cursor: pointer;
-  text-shadow: 0rem 0rem 1rem #efb346;
+  text-shadow: 0rem 0rem 1rem #ff00d4;
 }
 
 .fun:hover {
@@ -28,9 +27,9 @@ ul {
 
 .fun-two {
   display: block;
-  font-size: 3rem;
+  font-size: 2rem;
   cursor: pointer;
-  text-shadow: 0rem 0rem 1rem #efb346;
+  text-shadow: 0rem 0rem 1rem #48009b;
 }
 
 .fun-two:hover {

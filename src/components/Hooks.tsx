@@ -1,4 +1,11 @@
-import { useState, useEffect, useCallback, useMemo, ChangeEvent } from "react";
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  useRef,
+  ChangeEvent,
+} from "react";
 
 interface User {
   id: number;
@@ -10,9 +17,15 @@ const Hooks = () => {
   const [count, setCount] = useState<number>(0);
   const [users, setUsers] = useState<User[] | null>(null);
 
-  const [input, setInput] = useState<string>("");
+  const [newUser, setNewUser] = useState<string>("");
 
   const [myNumber, setMyNumber] = useState<number>(30);
+
+  // we could use a non-null assertion with "null!"
+  const inputRef = useRef<HTMLInputElement>(null);
+  console.log("inputRef?.current:", inputRef?.current);
+  console.log("inputRef?.current?.value:", inputRef?.current?.value);
+  // changing the value of the Ref will NOT make a re-render of that component
 
   // useEffect deals with Side Effects, so it doesn't really return a value (same as useLayoutEffect)
   // so with TypeScript there is nothing much to do
@@ -32,14 +45,14 @@ const Hooks = () => {
 
   const handleAddUser = () => {
     if (!users) {
-      setUsers([{ id: 1, username: input }]);
+      setUsers([{ id: 1, username: newUser }]);
     } else {
       setUsers([
         ...users,
-        { id: users[users.length - 1].id + 1, username: input },
+        { id: users[users.length - 1].id + 1, username: newUser },
       ]);
     }
-    setInput("");
+    setNewUser("");
   };
 
   // useCallback memoizes a function so it's not always recreated
@@ -59,7 +72,7 @@ const Hooks = () => {
   // so we can be more specific and tell it what event it is
   const handleInputChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>): void => {
-      setInput(event.target.value);
+      setNewUser(event.target.value);
     },
     []
   );
@@ -82,7 +95,7 @@ const Hooks = () => {
   return (
     <div>
       <hr />
-      <h2>Hooks</h2>
+      <h2>Hooks 🪝</h2>
       <hr />
       <h3>useState & useCallback</h3>
       <p>Count: {count}</p>
@@ -101,7 +114,7 @@ const Hooks = () => {
         ))}
       </ol>
       <div>
-        <input type="text" value={input} onChange={handleInputChange} />
+        <input type="text" value={newUser} onChange={handleInputChange} />
         <button onClick={handleAddUser}>Add User</button>
       </div>
       <hr />
@@ -115,6 +128,9 @@ const Hooks = () => {
       />
       <p>Fibonacci Number: {result}</p>
       <hr />
+      <h3>useRef</h3>
+      <input type="text" ref={inputRef} />
+      <p>current.value: {inputRef?.current?.value}</p>
     </div>
   );
 };
