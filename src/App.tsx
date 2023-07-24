@@ -3,6 +3,7 @@ import Section from "./components/Section";
 import Counter from "./components/Counter";
 import CounterTwo from "./components/CounterTwo";
 import List from "./components/List";
+import Hooks from "./components/Hooks";
 
 import "./App.css";
 
@@ -29,6 +30,7 @@ function App() {
         items={["😎", "🤣", "😜", "🤓"]}
         render={(item: string) => <span className="fun-two">{item}</span>}
       />
+      <Hooks />
     </>
   );
 }
