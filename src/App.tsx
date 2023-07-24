@@ -8,6 +8,7 @@ import Hooks from "./components/Hooks";
 import "./App.css";
 
 import { useState } from "react";
+import CounterReducer from "./components/CounterReducer";
 
 function App() {
   // mouse over the setCount function to get the Type
@@ -31,6 +32,8 @@ function App() {
         render={(item: string) => <span className="fun-two">{item}</span>}
       />
       <Hooks />
+      {/* the children is a function, that recieves the number and displays the current count */}
+      <CounterReducer>{(num: number) => <>Count: {num}</>}</CounterReducer>
     </>
   );
 }
