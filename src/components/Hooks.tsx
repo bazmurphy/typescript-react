@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, ChangeEvent } from "react";
 
 interface User {
   id: number;
@@ -28,7 +28,7 @@ const Hooks = () => {
     return () => console.log("Unmounting...");
   }, [users]);
 
-  const handleClick = () => {
+  const handleAddUser = () => {
     if (!users) {
       setUsers([{ id: 1, username: input }]);
     } else {
@@ -40,6 +40,28 @@ const Hooks = () => {
     setInput("");
   };
 
+  // useCallback memoizes a function so it's not always recreated
+  const incrementCount = useCallback(
+    () => setCount((prevCount) => prevCount + 1),
+    // it also has a dependency array, so if it had anything else it depended on, we would pass that in
+    []
+  );
+
+  // we can rely on inference but we can also explicitly state the function returns nothing (void)
+  const decrementCount = useCallback(
+    (): void => setCount((prevCount) => prevCount - 1),
+    []
+  );
+
+  // if we want to use the event in a function, we get a warning that it implicitly has 'any' applied
+  // so we can be more specific and tell it what event it is
+  const handleInputChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>): void => {
+      setInput(event.target.value);
+    },
+    []
+  );
+
   return (
     <div>
       <hr />
@@ -48,12 +70,8 @@ const Hooks = () => {
       <h3>useState</h3>
       <p>Count: {count}</p>
       <div>
-        <button onClick={() => setCount((prevCount) => prevCount - 1)}>
-          -
-        </button>
-        <button onClick={() => setCount((prevCount) => prevCount + 1)}>
-          +
-        </button>
+        <button onClick={decrementCount}>-</button>
+        <button onClick={incrementCount}>+</button>
       </div>
       <hr />
       <h3>useState & useEffect</h3>
@@ -66,12 +84,8 @@ const Hooks = () => {
         ))}
       </ol>
       <div>
-        <input
-          type="text"
-          value={input}
-          onChange={(event) => setInput(event.target.value)}
-        />
-        <button onClick={handleClick}>Add User</button>
+        <input type="text" value={input} onChange={handleInputChange} />
+        <button onClick={handleAddUser}>Add User</button>
       </div>
       <hr />
     </div>
