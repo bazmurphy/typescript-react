@@ -12,6 +12,7 @@ type StateType = {
   text: string;
 };
 
+// define the initial state
 export const initialState: StateType = { count: 0, text: "" };
 
 const enum REDUCER_ACTION_TYPE {
@@ -25,6 +26,7 @@ type ReducerAction = {
   payload?: string;
 };
 
+// define the reducer function
 const reducer = (state: StateType, action: ReducerAction): StateType => {
   switch (action.type) {
     case REDUCER_ACTION_TYPE.INCREMENT:
@@ -38,7 +40,7 @@ const reducer = (state: StateType, action: ReducerAction): StateType => {
   }
 };
 
-// custom hook
+// custom hook to return the state, and dispatch functions
 const useCounterContext = (initialState: StateType) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -66,6 +68,7 @@ const useCounterContext = (initialState: StateType) => {
 
 type UseCounterContextType = ReturnType<typeof useCounterContext>;
 
+// create an initial context state
 const initialContextState: UseCounterContextType = {
   state: initialState,
   increment: () => {},
@@ -74,6 +77,7 @@ const initialContextState: UseCounterContextType = {
   handleTextInput: () => {},
 };
 
+// create a context
 export const CounterContext =
   createContext<UseCounterContextType>(initialContextState);
 
@@ -81,6 +85,7 @@ type ChildrenType = {
   children?: ReactElement | undefined;
 };
 
+// create a context provider
 export const CounterProvider = ({
   children,
   ...initialState
@@ -98,7 +103,7 @@ type UseCounterHookType = {
   decrement: () => void;
 };
 
-// custom hook
+// custom hook to return the count state and increment/decrement functions
 export const useCounter = (): UseCounterHookType => {
   const {
     state: { count },
@@ -113,6 +118,7 @@ type UseCounterTextHookType = {
   handleTextInput: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
+// custom hook to return the text state and handleTextInput function
 export const useCounterText = (): UseCounterTextHookType => {
   const {
     state: { text },

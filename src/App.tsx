@@ -39,6 +39,7 @@ function App() {
       <Hooks />
       {/* the children is a function, that recieves the number and displays the current count */}
       <CounterReducer>{(num: number) => <>Count: {num}</>}</CounterReducer>
+      {/* bring in the counter context provider */}
       <CounterProvider count={initialState.count} text={initialState.text}>
         <CounterFour>{(num: number) => <>Count: {num}</>}</CounterFour>
       </CounterProvider>
