@@ -5,10 +5,15 @@ import CounterTwo from "./components/CounterTwo";
 import List from "./components/List";
 import Hooks from "./components/Hooks";
 
+import CounterReducer from "./components/CounterReducer";
+
+import { CounterProvider } from "./context/CounterContext";
+import { initialState } from "./context/CounterContext";
+import CounterFour from "./components/CounterFour";
+
 import "./App.css";
 
 import { useState } from "react";
-import CounterReducer from "./components/CounterReducer";
 
 function App() {
   // mouse over the setCount function to get the Type
@@ -34,6 +39,9 @@ function App() {
       <Hooks />
       {/* the children is a function, that recieves the number and displays the current count */}
       <CounterReducer>{(num: number) => <>Count: {num}</>}</CounterReducer>
+      <CounterProvider count={initialState.count} text={initialState.text}>
+        <CounterFour>{(num: number) => <>Count: {num}</>}</CounterFour>
+      </CounterProvider>
     </>
   );
 }
