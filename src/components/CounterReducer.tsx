@@ -99,7 +99,7 @@ const CounterReducer = ({ children }: ChildrenType) => {
   return (
     <div>
       <hr />
-      <h2>useReducer</h2>
+      <h3>useReducer</h3>
       <p>{children(state.count)}</p>
       <div>
         <button onClick={decrement}>-</button>

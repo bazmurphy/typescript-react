@@ -13,7 +13,7 @@ const CounterFour = ({ children }: ChildrenType) => {
   return (
     <div>
       <hr />
-      <h2>useContext & useReducer & Custom Hooks</h2>
+      <h3>useContext & useReducer & Custom Hooks</h3>
       <p>{children(count)}</p>
       <div>
         <button onClick={decrement}>-</button>
