@@ -70,7 +70,8 @@ const initialContextState: UseCounterContextType = {
   state: initialState,
   increment: () => {},
   decrement: () => {},
-  handleTextInput: (event: ChangeEvent<HTMLInputElement>) => {},
+  // handleTextInput: (event: ChangeEvent<HTMLInputElement>) => {},
+  handleTextInput: () => {},
 };
 
 export const CounterContext =
