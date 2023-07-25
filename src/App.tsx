@@ -22,7 +22,7 @@ function App() {
 
   return (
     <>
-      <Heading title={"Hello"} />
+      <Heading title={"TypeScript & React"} />
       {/* children are not the same as props, they are put between the opening/closing tags */}
       <Section title={"A different title"}>This is my Section</Section>
       <Counter></Counter>
